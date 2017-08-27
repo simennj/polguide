@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+<div class="content">
+    <div class="filter">
+
+    </div>
+    <div class="list">
+        {% for product in product_list %}
+            <div>
+                <div class="name">
+                    {{ product.name }}
+                </div>
+                <div class="col">
+                    <div class="category">
+                        {{ product.category }}
+                    </div>
+                    <div class="country">
+                        Jordkloden
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row volume">
+                        {{ product.volume }}l
+                    </div>
+                    <div class="row price">
+                        {{ product.most_recent.price }}.-
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row alcohol">
+                        {{ product.alcohol }}%
+                    </div>
+                    <div class="row alcohol_price">
+                        {{ product.most_recent.alcohol_price }}kr/cl
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+<style>
+
+    body {
+        margin: 0;
+    }
+    .content {
+        display: flex;
+        height: 100vh;
+    }
+
+    .filter {
+        height: 100vh;
+        min-width: 300px;
+        background: red;
+    }
+
+    .list {
+        height: 100vh;
+        overflow: auto;
+        flex-grow: 1;
+    }
+
+    .list > div {
+        border: black solid;
+        display: flex;
+        flex-flow: row;
+        padding: .5em;
+    }
+
+    .list > div div {
+        overflow: hidden;
+    }
+
+    .list .name {
+        height: 2.4em;
+        min-width: 8em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        flex: 1 1 auto;
+    }
+
+    .list .col {
+        flex: 0 0 auto;
+        margin-left: .5em;
+    }
+
+    .list .category {
+        min-width: 10em;
+    }
+
+    .list .price {
+        width: 5em;
+    }
+
+    .list .alcohol_price {
+        width: 6em;
+    }
+
+    .list .col div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .list .row {
+    }
+</style>
+</html>

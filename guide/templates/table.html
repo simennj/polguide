@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+</head>
+<body>
+<table class="table">
+    {% for product in product_list %}
+        <tr class="product">
+            <td class="name">
+                <div>
+                    {{ product.name }}
+                </div>
+            </td>
+            <td>
+                {{ product.category }}
+                <br>
+                Jordkloden
+            </td>
+            <td>
+                {{ product.alcohol }}%
+                <br>
+                {{ product.volume }}l
+            </td>
+            <td>
+                {{ product.most_recent.price }}.-
+                <br>
+                {{ product.most_recent.alcohol_price }}kr/cl
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{{ paginator. }}
+</body>
+</html>
+<style>
+    .table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    .product td {
+        width: 5em;
+    }
+
+    .name div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 2.4em;
+        width: 100em;
+    }
+</style>
