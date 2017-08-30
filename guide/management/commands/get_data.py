@@ -19,7 +19,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         with closing(requests.get(self.URL)) as download:
             reader = csv.DictReader(download.content.decode('iso-8859-1').splitlines(), delimiter=';')
-            self.stdout.write('File downloaded, {} items'.format(reader.line_num))
+            self.stdout.write('File downloaded')
             with transaction.atomic():
                 for row in reader:
                     if len(row) != 36:
