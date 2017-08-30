@@ -4,7 +4,10 @@ from django.db import transaction
 
 import requests
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
+from django.utils.dateparse import parse_datetime
+from django.utils.timezone import make_aware
+
 from guide.models import Product, Category, ProductHistory
 
 
@@ -38,7 +41,7 @@ class Command(BaseCommand):
                             'alcohol_price': alcohol_price
                         }
                     )
-                    timestamp = row['Datotid']
+                    timestamp = make_aware(parse_datetime(row['Datotid']))
                     ProductHistory.objects.update_or_create(
                         product=product,
                         timestamp=timestamp,
