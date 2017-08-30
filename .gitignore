@@ -42,3 +42,4 @@ local_settings.py
 env/
 venv/
 ENV/
+polguide/settings/SECRET_KEY
