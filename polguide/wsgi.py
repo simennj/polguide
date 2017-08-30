@@ -11,6 +11,9 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "polguide.settings.prod")
+if os.environ.get('DJANGO_DEVELOPMENT') is not None:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "polguide.settings.dev")
+else:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "polguide.settings.prod")
 
 application = get_wsgi_application()
