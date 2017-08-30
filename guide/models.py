@@ -9,6 +9,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    id = models.BigAutoField(primary_key=True, verbose_name='ID')
     name = models.CharField(max_length=99, blank=False, null=False)
     category = models.ForeignKey(Category)
     volume = models.DecimalField(decimal_places=2, max_digits=9)
