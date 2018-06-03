@@ -1,10 +1,9 @@
 import csv
 from contextlib import closing
-from django.db import transaction
 
 import requests
-
 from django.core.management.base import BaseCommand
+from django.db import transaction
 from django.utils.dateparse import parse_datetime
 from django.utils.timezone import make_aware
 
@@ -21,9 +20,11 @@ class Command(BaseCommand):
             reader = csv.DictReader(download.content.decode('iso-8859-1').splitlines(), delimiter=';')
             self.stdout.write('File downloaded')
             with transaction.atomic():
+                row_length = len(reader.fieldnames)
                 for row in reader:
-                    if len(row) != 36:
-                        self.stdout.write('{} has incorrect amount of fields and is skipped'.format(row['Varenavn']))
+                    if len(row) != row_length:
+                        self.stdout.write('{} has incorrect amount of fields ({}, should be {}) and is skipped'
+                                          .format(row['Varenavn'], len(row), row_length))
                         continue
                     volume = float(row['Volum'].replace(',', '.'))
                     alcohol = float(row['Alkohol'].replace(',', '.'))
