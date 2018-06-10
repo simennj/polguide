@@ -4,4 +4,4 @@ djangorestframework
 django-filter
 django-crispy-forms
 django-cors-headers
-psycopg2
+psycopg2-binary
