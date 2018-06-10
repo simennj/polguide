@@ -1,7 +1,6 @@
 from polguide.settings.base import *
 
-with open(os.path.join(BASE_DIR, 'settings', 'SECRET_KEY')) as secret_key_file:
-    SECRET_KEY = secret_key_file.read().strip()
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ['polguide.no']
 
