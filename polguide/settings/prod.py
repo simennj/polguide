@@ -10,3 +10,5 @@ DATABASES = {
         'NAME': 'polguide'
     }
 }
+
+STATIC_ROOT = '/var/www/html/static'
