@@ -2,7 +2,7 @@ from polguide.settings.base import *
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-ALLOWED_HOSTS = ['polguide.no']
+ALLOWED_HOSTS = ['polguide.no', 'alpha.polguide.no']
 
 DATABASES = {
     'default': {
