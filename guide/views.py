@@ -1,4 +1,5 @@
 from django_filters import rest_framework as filters
+from rest_framework import pagination
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from guide.models import Product, ProductHistory, Category
@@ -18,10 +19,16 @@ class ProductFilter(filters.FilterSet):
         fields = ()
 
 
+class ProductPagination(pagination.PageNumberPagination):
+    page_size_query_param = 'rowsPerPage'
+    max_page_size = 100
+
+
 class ProductViewSet(ReadOnlyModelViewSet):
     queryset = Product.objects.all().filter()
     serializer_class = ProductSerializer
     filter_class = ProductFilter
+    pagination_class = ProductPagination
 
 
 class ProductHistoryViewSet(ReadOnlyModelViewSet):
