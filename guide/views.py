@@ -49,9 +49,14 @@ class ProductViewSet(ReadOnlyModelViewSet):
         )
 
 
+class ProductHistoryFilter(filters.FilterSet):
+    product = filters.NumberFilter()
+
+
 class ProductHistoryViewSet(ReadOnlyModelViewSet):
     queryset = ProductHistory.objects.all()
     serializer_class = ProductHistorySerializer
+    filter_class = ProductHistoryFilter
 
 
 class CategoryViewSet(ReadOnlyModelViewSet):
