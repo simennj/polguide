@@ -15,7 +15,7 @@ class ProductHistorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
 
     class Meta:
