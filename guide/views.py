@@ -52,6 +52,10 @@ class ProductViewSet(ReadOnlyModelViewSet):
 class ProductHistoryFilter(filters.FilterSet):
     product = filters.NumberFilter()
 
+    class Meta:
+        model = ProductHistory
+        fields = ()
+
 
 class ProductHistoryViewSet(ReadOnlyModelViewSet):
     queryset = ProductHistory.objects.all()
