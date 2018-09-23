@@ -32,8 +32,8 @@ class ProductHistory(models.Model):
 
     class Meta:
         unique_together = ("product", "timestamp")
-        get_latest_by = 'timestamp'
-        ordering = ['product', 'timestamp']
+        get_latest_by = '-timestamp'
+        ordering = ['product', '-timestamp']
 
     def __str__(self):
         return '{}_{}'.format(self.product, self.timestamp)
